@@ -66,10 +66,10 @@ function App() {
     setIsRevealing(true);
     timerRef.current = window.setInterval(() => {
       setRevealedCount((current) => {
-        if (current + 1 >= pairings.length) {
+        if (current >= pairings.length) {
           window.clearInterval(timerRef.current);
           setIsRevealing(false);
-          return pairings.length;
+          return current;
         }
         return current + 1;
       });
