@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import './confetti.css';
 
 const INITIAL_ROWS = 4;
 const REVEAL_DELAY = 5000;
@@ -124,6 +125,7 @@ function App() {
       <header className="topline"><span>✦</span> A LITTLE CHRISTMAS MAGIC <span>✦</span></header>
 
       <section className="card" aria-labelledby="page-title">
+        {isRevealing && revealedCount > 0 && <Confetti />}
         <div className="hero-art" aria-hidden="true">
           <span className="hero-star">✦</span>
           <span className="hero-tree tree-left">🎄</span>
@@ -189,7 +191,6 @@ function App() {
                 <p className="reveal-intro">{revealedCount === 0 ? 'The elves are mixing up the names…' : 'And the next lucky pair is…'}</p>
                 {revealedCount > 0 && (
                   <div className="pairing-card" key={revealedCount}>
-                    <Confetti />
                     <div className="pairing-emoji" aria-hidden="true">🎄</div>
                     <p className="giver-name">{draw[revealedCount - 1].giver}</p>
                     <span className="gets-label">is gifting to</span>

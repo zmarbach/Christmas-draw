@@ -1,0 +1,23 @@
+.card > .confetti {
+  z-index: 2;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.card > .confetti .confetti-piece {
+  animation-name: confetti-card-fall;
+}
+
+@keyframes confetti-card-fall {
+  0% {
+    top: -12px;
+    transform: translateY(0) rotate(0);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  100% {
+    top: calc(100% + 12px);
+    transform: translateY(0) rotate(560deg);
+    opacity: 0;
+  }
+}
