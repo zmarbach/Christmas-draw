@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 const INITIAL_ROWS = 4;
-const REVEAL_DELAY = 1700;
+const REVEAL_DELAY = 3000;
 
 function makeRows(count = INITIAL_ROWS) {
   return Array.from({ length: count }, () => ({ first: '', last: '' }));
