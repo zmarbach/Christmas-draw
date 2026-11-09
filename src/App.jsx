@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import './confetti.css';
 
 const INITIAL_ROWS = 4;
@@ -27,7 +28,7 @@ function makeDraw(names) {
 }
 
 function Confetti() {
-  return (
+  return createPortal(
     <div className="confetti" aria-hidden="true">
       {Array.from({ length: 44 }, (_, index) => (
         <span
@@ -36,7 +37,8 @@ function Confetti() {
           style={{ '--piece': index, '--delay': `${(index % 11) * 0.045}s` }}
         />
       ))}
-    </div>
+    </div>,
+    document.body,
   );
 }
 
@@ -125,7 +127,7 @@ function App() {
       <header className="topline"><span>✦</span> A LITTLE CHRISTMAS MAGIC <span>✦</span></header>
 
       <section className="card" aria-labelledby="page-title">
-        {isRevealing && revealedCount > 0 && <Confetti />}
+        {revealedCount > 0 && <Confetti key={revealedCount} />}
         <div className="hero-art" aria-hidden="true">
           <span className="hero-star">✦</span>
           <span className="hero-tree tree-left">🎄</span>

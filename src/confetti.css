@@ -1,14 +1,31 @@
-.card > .confetti {
-  z-index: 2;
+.confetti {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
   overflow: hidden;
-  border-radius: inherit;
+  pointer-events: none;
 }
 
-.card > .confetti .confetti-piece {
-  animation-name: confetti-card-fall;
+.confetti-piece {
+  position: absolute;
+  top: -12px;
+  left: calc((var(--piece) * 37 + 5) % 100 * 1%);
+  width: 7px;
+  height: 12px;
+  border-radius: 2px;
+  background: #bd3940;
+  animation: confetti-viewport-fall 1.7s ease-in var(--delay) both;
 }
 
-@keyframes confetti-card-fall {
+.confetti-piece-1 { background: white; border: 1px solid #e4e7df; }
+.confetti-piece-2 { background: #d4ae53; width: 5px; height: 9px; }
+.confetti-piece-3 { background: #fff; border-radius: 50%; width: 6px; height: 6px; }
+.confetti-piece-4 { background: #a92e37; width: 5px; height: 11px; }
+.confetti-piece-5 { background: #f0d7d4; width: 8px; height: 5px; }
+.confetti-piece-6 { background: #fff; width: 5px; height: 10px; }
+.confetti-piece-7 { background: #d4ae53; border-radius: 50%; width: 6px; height: 6px; }
+
+@keyframes confetti-viewport-fall {
   0% {
     top: -12px;
     transform: translateY(0) rotate(0);
